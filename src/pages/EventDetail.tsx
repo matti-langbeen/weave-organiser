@@ -4,6 +4,7 @@ import type { EventType } from '../types';
 import { getEventById, updateEvent } from '../services/eventService';
 import LoadingSpinner from '../components/LoadingSpinner';
 import EmptyState from '../components/EmptyState';
+import EventQRCode from '../components/EventQRCode';
 import './EventDetail.css';
 
 const EventDetail = () => {
@@ -299,6 +300,17 @@ const EventDetail = () => {
                 <h2>About This Event</h2>
                 <p>{event.description}</p>
               </div>
+
+              {isUpcoming && (
+                <div className="event-detail-section">
+                  <h2>Event Check-in</h2>
+                  <EventQRCode 
+                    eventId={event.id}
+                    eventName={event.name}
+                    eventDate={event.date}
+                  />
+                </div>
+              )}
 
               {event.attendees.length > 0 && (
                 <div className="event-detail-section">
