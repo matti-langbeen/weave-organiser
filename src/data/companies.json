@@ -1,0 +1,29 @@
+[
+  {
+    "id": "comp-1",
+    "name": "TechVentures Inc",
+    "description": "Leading technology company specializing in cloud computing and enterprise solutions. We're passionate about innovation and developing cutting-edge software.",
+    "industry": "Cloud Computing",
+    "logo": "https://images.unsplash.com/photo-1611162617474-5b21e879e113?w=200",
+    "website": "https://techventures.example.com",
+    "eventIds": ["evt-1", "evt-4"]
+  },
+  {
+    "id": "comp-2",
+    "name": "Innovative Software Labs",
+    "description": "Software development company focused on creating innovative solutions for businesses. Our team works on everything from mobile apps to enterprise platforms.",
+    "industry": "Software Development",
+    "logo": "https://images.unsplash.com/photo-1599305445671-ac291c95aaa9?w=200",
+    "website": "https://innovativesoft.example.com",
+    "eventIds": ["evt-2", "evt-5"]
+  },
+  {
+    "id": "comp-3",
+    "name": "DataInsights Analytics",
+    "description": "Data analytics and AI company helping businesses make data-driven decisions. We specialize in machine learning, predictive analytics, and business intelligence.",
+    "industry": "Data Science & AI",
+    "logo": "https://images.unsplash.com/photo-1560179707-f14e90ef3623?w=200",
+    "website": "https://datainsights.example.com",
+    "eventIds": ["evt-3"]
+  }
+]

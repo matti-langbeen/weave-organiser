@@ -1,0 +1,57 @@
+[
+  {
+    "id": "std-1",
+    "name": "Alex Johnson",
+    "email": "alex.johnson@university.edu",
+    "major": "Computer Science",
+    "graduationYear": 2025,
+    "bio": "Passionate about full-stack development and cloud technologies. Looking for opportunities in software engineering.",
+    "skills": ["JavaScript", "React", "Node.js", "Python", "AWS"],
+    "eventIds": ["evt-1", "evt-2", "evt-4"],
+    "avatar": "https://i.pravatar.cc/150?img=1"
+  },
+  {
+    "id": "std-2",
+    "name": "Sarah Martinez",
+    "email": "sarah.martinez@university.edu",
+    "major": "Data Science",
+    "graduationYear": 2025,
+    "bio": "Data enthusiast with a strong background in machine learning and statistical analysis. Interested in AI applications.",
+    "skills": ["Python", "TensorFlow", "SQL", "R", "Tableau"],
+    "eventIds": ["evt-1", "evt-3"],
+    "avatar": "https://i.pravatar.cc/150?img=5"
+  },
+  {
+    "id": "std-3",
+    "name": "Michael Chen",
+    "email": "michael.chen@university.edu",
+    "major": "Information Systems",
+    "graduationYear": 2026,
+    "bio": "Aspiring product manager with a technical background. Love working at the intersection of technology and business.",
+    "skills": ["Product Management", "Agile", "UI/UX", "SQL", "Java"],
+    "eventIds": ["evt-1", "evt-3", "evt-5"],
+    "avatar": "https://i.pravatar.cc/150?img=8"
+  },
+  {
+    "id": "std-4",
+    "name": "Emily Davis",
+    "email": "emily.davis@university.edu",
+    "major": "Computer Science",
+    "graduationYear": 2025,
+    "bio": "Frontend developer with a passion for creating beautiful, accessible user interfaces. Experienced in modern web technologies.",
+    "skills": ["React", "TypeScript", "CSS", "HTML", "Accessibility"],
+    "eventIds": ["evt-2", "evt-3", "evt-5"],
+    "avatar": "https://i.pravatar.cc/150?img=9"
+  },
+  {
+    "id": "std-5",
+    "name": "David Kim",
+    "email": "david.kim@university.edu",
+    "major": "Software Engineering",
+    "graduationYear": 2026,
+    "bio": "Backend developer interested in distributed systems and microservices architecture. Enjoy solving complex technical challenges.",
+    "skills": ["Java", "Spring Boot", "Kubernetes", "PostgreSQL", "Redis"],
+    "eventIds": ["evt-3", "evt-4"],
+    "avatar": "https://i.pravatar.cc/150?img=12"
+  }
+]

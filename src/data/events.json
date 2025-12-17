@@ -1,0 +1,52 @@
+[
+  {
+    "id": "evt-1",
+    "name": "Tech Career Fair 2025",
+    "description": "Join us for an exciting career fair featuring top tech companies from around the region. Network with recruiters, learn about opportunities, and prepare for your future career.",
+    "date": "2025-02-15T10:00:00Z",
+    "location": "University Convention Center",
+    "companyId": "comp-1",
+    "attendees": ["std-1", "std-2", "std-3"],
+    "imageUrl": "https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=800"
+  },
+  {
+    "id": "evt-2",
+    "name": "Software Engineering Workshop",
+    "description": "Hands-on workshop covering modern software development practices, including agile methodologies, CI/CD, and cloud deployment strategies.",
+    "date": "2025-03-10T14:00:00Z",
+    "location": "Innovation Lab, Building A",
+    "companyId": "comp-2",
+    "attendees": ["std-1", "std-4"],
+    "imageUrl": "https://images.unsplash.com/photo-1531482615713-2afd69097998?w=800"
+  },
+  {
+    "id": "evt-3",
+    "name": "Data Science Summit",
+    "description": "Explore the latest trends in data science and machine learning. Industry experts will share insights on AI applications and career paths.",
+    "date": "2025-04-05T09:00:00Z",
+    "location": "Main Auditorium",
+    "companyId": "comp-3",
+    "attendees": ["std-2", "std-3", "std-4", "std-5"],
+    "imageUrl": "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800"
+  },
+  {
+    "id": "evt-4",
+    "name": "Startup Pitch Night",
+    "description": "Watch aspiring entrepreneurs pitch their innovative ideas to a panel of investors and industry leaders. Great networking opportunity!",
+    "date": "2025-04-20T18:00:00Z",
+    "location": "Entrepreneurship Hub",
+    "companyId": "comp-1",
+    "attendees": ["std-1", "std-5"],
+    "imageUrl": "https://images.unsplash.com/photo-1559136555-9303baea8ebd?w=800"
+  },
+  {
+    "id": "evt-5",
+    "name": "UX Design Masterclass",
+    "description": "Learn from industry-leading UX designers about creating user-centered products. Includes portfolio review sessions and design challenges.",
+    "date": "2025-05-12T13:00:00Z",
+    "location": "Design Studio, Building C",
+    "companyId": "comp-2",
+    "attendees": ["std-3", "std-4"],
+    "imageUrl": "https://images.unsplash.com/photo-1581291518633-83b4ebd1d83e?w=800"
+  }
+]
