@@ -264,11 +264,18 @@ const EventDetail = () => {
             <div className="event-detail-content">
               <div className="event-header">
                 <h1>{event.name}</h1>
-                {isUpcoming && (
-                  <Link to={`/events/${id}?edit=true`} className="btn btn-primary">
-                    Edit Event
-                  </Link>
-                )}
+                <div className="event-actions">
+                  {isUpcoming && (
+                    <>
+                      <Link to={`/events/${id}/booth-map`} className="btn btn-secondary">
+                        🗺️ Booth Map
+                      </Link>
+                      <Link to={`/events/${id}?edit=true`} className="btn btn-primary">
+                        Edit Event
+                      </Link>
+                    </>
+                  )}
+                </div>
               </div>
 
               <div className="event-detail-meta">

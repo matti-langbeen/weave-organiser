@@ -25,5 +25,68 @@
     "logo": "https://images.unsplash.com/photo-1560179707-f14e90ef3623?w=200",
     "website": "https://datainsights.example.com",
     "eventIds": ["evt-3"]
+  },
+  {
+    "id": "comp-4",
+    "name": "CyberShield Security",
+    "description": "Cybersecurity solutions provider protecting businesses from digital threats. Specializing in network security, threat detection, and compliance.",
+    "industry": "Cybersecurity",
+    "logo": "https://images.unsplash.com/photo-1614064641938-3bbee52942c7?w=200",
+    "website": "https://cybershield.example.com",
+    "eventIds": []
+  },
+  {
+    "id": "comp-5",
+    "name": "FinTech Solutions",
+    "description": "Financial technology company revolutionizing banking and payments. We build innovative platforms for modern financial services.",
+    "industry": "Financial Technology",
+    "logo": "https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=200",
+    "website": "https://fintechsol.example.com",
+    "eventIds": []
+  },
+  {
+    "id": "comp-6",
+    "name": "HealthTech Innovations",
+    "description": "Healthcare technology company improving patient care through innovative solutions. Focus on telemedicine, health records, and patient engagement.",
+    "industry": "Healthcare Technology",
+    "logo": "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=200",
+    "website": "https://healthtech.example.com",
+    "eventIds": []
+  },
+  {
+    "id": "comp-7",
+    "name": "GreenEnergy Systems",
+    "description": "Sustainable energy solutions provider. We develop smart grid technology and renewable energy management systems.",
+    "industry": "Clean Energy",
+    "logo": "https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?w=200",
+    "website": "https://greenenergy.example.com",
+    "eventIds": []
+  },
+  {
+    "id": "comp-8",
+    "name": "AI Robotics Corp",
+    "description": "Robotics and artificial intelligence company building the future of automation. Specializing in industrial robots and AI assistants.",
+    "industry": "Robotics & AI",
+    "logo": "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=200",
+    "website": "https://airobotics.example.com",
+    "eventIds": []
+  },
+  {
+    "id": "comp-9",
+    "name": "CloudNine Infrastructure",
+    "description": "Cloud infrastructure and DevOps solutions. We help companies scale their applications with modern cloud architecture.",
+    "industry": "Cloud Infrastructure",
+    "logo": "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=200",
+    "website": "https://cloudnine.example.com",
+    "eventIds": []
+  },
+  {
+    "id": "comp-10",
+    "name": "EduTech Platform",
+    "description": "Educational technology company transforming learning experiences. Building platforms for online education and skill development.",
+    "industry": "Education Technology",
+    "logo": "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=200",
+    "website": "https://edutech.example.com",
+    "eventIds": []
   }
 ]

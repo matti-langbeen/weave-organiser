@@ -3,6 +3,7 @@ import { OrganizerProvider } from './contexts/OrganizerContext';
 import Header from './components/Header';
 import EventList from './pages/EventList';
 import EventDetail from './pages/EventDetail';
+import BoothMapEditor from './pages/BoothMapEditor';
 import CompanyDetail from './pages/CompanyDetail';
 import StudentProfile from './pages/StudentProfile';
 import './App.css';
@@ -17,6 +18,7 @@ function App() {
             <Route path="/" element={<EventList />} />
             <Route path="/events/:id" element={<EventDetail />} />
             <Route path="/events/:id/edit" element={<EventDetail editMode />} />
+            <Route path="/events/:id/booth-map" element={<BoothMapEditor />} />
             <Route path="/companies/:id" element={<CompanyDetail />} />
             <Route path="/students/:id" element={<StudentProfile />} />
           </Routes>

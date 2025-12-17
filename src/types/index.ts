@@ -15,6 +15,23 @@ export interface Attendee {
   registeredAt?: string;
 }
 
+export interface Booth {
+  id: string;
+  number: string;
+  companyId?: string;
+  x: number; // position in pixels
+  y: number; // position in pixels
+  width: number;
+  height: number;
+}
+
+export interface FloorPlan {
+  imageUrl?: string;
+  imageData?: string; // base64 data for uploaded images
+  width: number;
+  height: number;
+}
+
 export interface EventType {
   id: string;
   name: string;
@@ -27,6 +44,8 @@ export interface EventType {
   imageUrl?: string;
   capacity?: number;
   registrationDeadline?: string;
+  floorPlan?: FloorPlan;
+  booths?: Booth[];
 }
 
 export interface Company {
