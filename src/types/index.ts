@@ -1,4 +1,4 @@
-export interface Event {
+export interface EventType {
   id: string;
   name: string;
   description: string;
@@ -30,3 +30,4 @@ export interface Student {
   eventIds: string[]; // events attended
   avatar?: string;
 }
+

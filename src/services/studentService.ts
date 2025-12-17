@@ -1,4 +1,4 @@
-import { Student } from '../types';
+import type { Student } from '../types';
 import { delay } from '../utils/delay';
 
 /**

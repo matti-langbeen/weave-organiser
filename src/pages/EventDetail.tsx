@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
-import { Event, Company, Student } from '../types';
+import type { EventType, Company, Student } from '../types';
 import { getEventById } from '../services/eventService';
 import { getCompanyById } from '../services/companyService';
 import { getStudentsByEventId } from '../services/studentService';
@@ -10,7 +10,7 @@ import './EventDetail.css';
 
 const EventDetail = () => {
   const { id } = useParams<{ id: string }>();
-  const [event, setEvent] = useState<Event | null>(null);
+  const [event, setEvent] = useState<EventType | null>(null);
   const [company, setCompany] = useState<Company | null>(null);
   const [attendees, setAttendees] = useState<Student[]>([]);
   const [loading, setLoading] = useState(true);

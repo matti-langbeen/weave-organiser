@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Event } from '../types';
+import type { EventType } from '../types';
 import { getEvents } from '../services/eventService';
 import EventCard from '../components/EventCard';
 import LoadingSpinner from '../components/LoadingSpinner';
@@ -7,7 +7,7 @@ import EmptyState from '../components/EmptyState';
 import './EventList.css';
 
 const EventList = () => {
-  const [events, setEvents] = useState<Event[]>([]);
+  const [events, setEvents] = useState<EventType[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 

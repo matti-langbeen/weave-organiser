@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
-import { Company, Event } from '../types';
+import type { Company, EventType } from '../types';
 import { getCompanyById } from '../services/companyService';
 import { getEventsByCompanyId } from '../services/eventService';
 import LoadingSpinner from '../components/LoadingSpinner';
@@ -11,7 +11,7 @@ import './CompanyDetail.css';
 const CompanyDetail = () => {
   const { id } = useParams<{ id: string }>();
   const [company, setCompany] = useState<Company | null>(null);
-  const [events, setEvents] = useState<Event[]>([]);
+  const [events, setEvents] = useState<EventType[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 

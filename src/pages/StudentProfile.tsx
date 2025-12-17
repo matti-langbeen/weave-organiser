@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
-import { Student, Event } from '../types';
+import type { Student, EventType } from '../types';
 import { getStudentById } from '../services/studentService';
 import { getEventsByStudentId } from '../services/eventService';
 import LoadingSpinner from '../components/LoadingSpinner';
@@ -11,7 +11,7 @@ import './StudentProfile.css';
 const StudentProfile = () => {
   const { id } = useParams<{ id: string }>();
   const [student, setStudent] = useState<Student | null>(null);
-  const [events, setEvents] = useState<Event[]>([]);
+  const [events, setEvents] = useState<EventType[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
