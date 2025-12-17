@@ -8,9 +8,10 @@ interface EventCardProps {
   location: string;
   imageUrl?: string;
   description?: string;
+  isUpcoming?: boolean;
 }
 
-const EventCard = ({ id, name, date, location, imageUrl, description }: EventCardProps) => {
+const EventCard = ({ id, name, date, location, imageUrl, description, isUpcoming }: EventCardProps) => {
   const formatDate = (dateString: string) => {
     const date = new Date(dateString);
     return date.toLocaleDateString('en-US', { 
@@ -23,10 +24,11 @@ const EventCard = ({ id, name, date, location, imageUrl, description }: EventCar
   };
 
   return (
-    <Link to={`/events/${id}`} className="event-card">
+    <Link to={`/events/${id}`} className={`event-card ${!isUpcoming ? 'event-card-past' : ''}`}>
       {imageUrl && (
         <div className="event-card-image">
           <img src={imageUrl} alt={name} />
+          {!isUpcoming && <div className="event-card-badge">Past Event</div>}
         </div>
       )}
       <div className="event-card-content">

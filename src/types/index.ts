@@ -1,12 +1,32 @@
+export interface Organizer {
+  id: string;
+  name: string;
+  email: string;
+  company: string;
+  avatar?: string;
+}
+
+export interface Attendee {
+  id: string;
+  name: string;
+  email: string;
+  avatar?: string;
+  major?: string;
+  registeredAt?: string;
+}
+
 export interface EventType {
   id: string;
   name: string;
   description: string;
   date: string;
   location: string;
-  companyId: string;
-  attendees: string[]; // student IDs
+  organizerId: string;
+  companyId?: string;
+  attendees: Attendee[];
   imageUrl?: string;
+  capacity?: number;
+  registrationDeadline?: string;
 }
 
 export interface Company {

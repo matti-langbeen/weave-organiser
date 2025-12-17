@@ -1,20 +1,32 @@
 import { useEffect, useState } from 'react';
-import { useParams, Link } from 'react-router-dom';
-import type { EventType, Company, Student } from '../types';
-import { getEventById } from '../services/eventService';
-import { getCompanyById } from '../services/companyService';
-import { getStudentsByEventId } from '../services/studentService';
+import { useParams, Link, useNavigate, useSearchParams } from 'react-router-dom';
+import type { EventType } from '../types';
+import { getEventById, updateEvent } from '../services/eventService';
 import LoadingSpinner from '../components/LoadingSpinner';
 import EmptyState from '../components/EmptyState';
 import './EventDetail.css';
 
 const EventDetail = () => {
   const { id } = useParams<{ id: string }>();
+  const [searchParams] = useSearchParams();
+  const navigate = useNavigate();
+  const editMode = searchParams.get('edit') === 'true';
+  
   const [event, setEvent] = useState<EventType | null>(null);
-  const [company, setCompany] = useState<Company | null>(null);
-  const [attendees, setAttendees] = useState<Student[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const [saving, setSaving] = useState(false);
+  
+  // Edit form state
+  const [formData, setFormData] = useState({
+    name: '',
+    description: '',
+    date: '',
+    location: '',
+    capacity: 0,
+    registrationDeadline: '',
+    imageUrl: ''
+  });
 
   useEffect(() => {
     const fetchEventDetails = async () => {
@@ -31,15 +43,17 @@ const EventDetail = () => {
         }
 
         setEvent(eventData);
-
-        // Fetch company and attendees in parallel
-        const [companyData, attendeesData] = await Promise.all([
-          getCompanyById(eventData.companyId),
-          getStudentsByEventId(id)
-        ]);
-
-        setCompany(companyData);
-        setAttendees(attendeesData);
+        
+        // Initialize form data
+        setFormData({
+          name: eventData.name,
+          description: eventData.description,
+          date: eventData.date.substring(0, 16), // Format for datetime-local input
+          location: eventData.location,
+          capacity: eventData.capacity || 0,
+          registrationDeadline: eventData.registrationDeadline?.substring(0, 16) || '',
+          imageUrl: eventData.imageUrl || ''
+        });
       } catch (err) {
         setError('Failed to load event details');
         console.error('Error fetching event details:', err);
@@ -63,6 +77,42 @@ const EventDetail = () => {
     });
   };
 
+  const isPastEvent = (dateString: string) => {
+    return new Date(dateString) < new Date();
+  };
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({ ...prev, [name]: value }));
+  };
+
+  const handleSave = async () => {
+    if (!id || !event) return;
+
+    try {
+      setSaving(true);
+      const updatedEvent = {
+        ...event,
+        name: formData.name,
+        description: formData.description,
+        date: new Date(formData.date).toISOString(),
+        location: formData.location,
+        capacity: formData.capacity,
+        registrationDeadline: formData.registrationDeadline ? new Date(formData.registrationDeadline).toISOString() : undefined,
+        imageUrl: formData.imageUrl
+      };
+      
+      await updateEvent(id, updatedEvent);
+      setEvent(updatedEvent);
+      navigate(`/events/${id}`);
+    } catch (err) {
+      console.error('Error saving event:', err);
+      alert('Failed to save changes. Please try again.');
+    } finally {
+      setSaving(false);
+    }
+  };
+
   if (loading) {
     return (
       <div className="page-container">
@@ -79,74 +129,201 @@ const EventDetail = () => {
     );
   }
 
+  const isUpcoming = !isPastEvent(event.date);
+
   return (
     <div className="page-container">
       <Link to="/" className="back-link">← Back to Events</Link>
       
       <div className="event-detail">
-        {event.imageUrl && (
-          <div className="event-detail-hero">
-            <img src={event.imageUrl} alt={event.name} />
-          </div>
-        )}
-
-        <div className="event-detail-content">
-          <h1>{event.name}</h1>
-
-          <div className="event-detail-meta">
-            <div className="meta-item">
-              <span className="icon">📅</span>
-              <span>{formatDate(event.date)}</span>
-            </div>
-            <div className="meta-item">
-              <span className="icon">📍</span>
-              <span>{event.location}</span>
-            </div>
-          </div>
-
-          <div className="event-detail-section">
-            <h2>About This Event</h2>
-            <p>{event.description}</p>
-          </div>
-
-          {company && (
-            <div className="event-detail-section">
-              <h2>Hosted By</h2>
-              <Link to={`/companies/${company.id}`} className="company-card">
-                {company.logo && (
-                  <img src={company.logo} alt={company.name} className="company-logo" />
-                )}
-                <div>
-                  <h3>{company.name}</h3>
-                  <p className="company-industry">{company.industry}</p>
-                </div>
-              </Link>
-            </div>
-          )}
-
-          {attendees.length > 0 && (
-            <div className="event-detail-section">
-              <h2>Attendees ({attendees.length})</h2>
-              <div className="attendees-grid">
-                {attendees.map(student => (
-                  <Link 
-                    key={student.id} 
-                    to={`/students/${student.id}`} 
-                    className="attendee-card"
-                  >
-                    {student.avatar && (
-                      <img src={student.avatar} alt={student.name} className="attendee-avatar" />
-                    )}
-                    <div className="attendee-info">
-                      <h4>{student.name}</h4>
-                      <p>{student.major}</p>
-                    </div>
-                  </Link>
-                ))}
+        {editMode ? (
+          // Edit Mode
+          <div className="event-edit-form">
+            <div className="form-header">
+              <h1>Edit Event</h1>
+              <div className="form-actions">
+                <button 
+                  className="btn btn-secondary" 
+                  onClick={() => navigate(`/events/${id}`)}
+                  disabled={saving}
+                >
+                  Cancel
+                </button>
+                <button 
+                  className="btn btn-primary" 
+                  onClick={handleSave}
+                  disabled={saving}
+                >
+                  {saving ? 'Saving...' : 'Save Changes'}
+                </button>
               </div>
             </div>
-          )}
-        </div>
+
+            <div className="form-group">
+              <label htmlFor="name">Event Name *</label>
+              <input
+                type="text"
+                id="name"
+                name="name"
+                value={formData.name}
+                onChange={handleInputChange}
+                required
+              />
+            </div>
+
+            <div className="form-group">
+              <label htmlFor="description">Description *</label>
+              <textarea
+                id="description"
+                name="description"
+                value={formData.description}
+                onChange={handleInputChange}
+                rows={5}
+                required
+              />
+            </div>
+
+            <div className="form-row">
+              <div className="form-group">
+                <label htmlFor="date">Event Date & Time *</label>
+                <input
+                  type="datetime-local"
+                  id="date"
+                  name="date"
+                  value={formData.date}
+                  onChange={handleInputChange}
+                  required
+                />
+              </div>
+
+              <div className="form-group">
+                <label htmlFor="registrationDeadline">Registration Deadline</label>
+                <input
+                  type="datetime-local"
+                  id="registrationDeadline"
+                  name="registrationDeadline"
+                  value={formData.registrationDeadline}
+                  onChange={handleInputChange}
+                />
+              </div>
+            </div>
+
+            <div className="form-row">
+              <div className="form-group">
+                <label htmlFor="location">Location *</label>
+                <input
+                  type="text"
+                  id="location"
+                  name="location"
+                  value={formData.location}
+                  onChange={handleInputChange}
+                  required
+                />
+              </div>
+
+              <div className="form-group">
+                <label htmlFor="capacity">Capacity</label>
+                <input
+                  type="number"
+                  id="capacity"
+                  name="capacity"
+                  value={formData.capacity}
+                  onChange={handleInputChange}
+                  min="0"
+                />
+              </div>
+            </div>
+
+            <div className="form-group">
+              <label htmlFor="imageUrl">Image URL</label>
+              <input
+                type="url"
+                id="imageUrl"
+                name="imageUrl"
+                value={formData.imageUrl}
+                onChange={handleInputChange}
+                placeholder="https://example.com/image.jpg"
+              />
+              {formData.imageUrl && (
+                <div className="image-preview">
+                  <img src={formData.imageUrl} alt="Preview" />
+                </div>
+              )}
+            </div>
+          </div>
+        ) : (
+          // View Mode
+          <>
+            {event.imageUrl && (
+              <div className="event-detail-hero">
+                <img src={event.imageUrl} alt={event.name} />
+                {!isUpcoming && <div className="event-status-badge">Past Event</div>}
+              </div>
+            )}
+
+            <div className="event-detail-content">
+              <div className="event-header">
+                <h1>{event.name}</h1>
+                {isUpcoming && (
+                  <Link to={`/events/${id}?edit=true`} className="btn btn-primary">
+                    Edit Event
+                  </Link>
+                )}
+              </div>
+
+              <div className="event-detail-meta">
+                <div className="meta-item">
+                  <span className="icon">📅</span>
+                  <span>{formatDate(event.date)}</span>
+                </div>
+                <div className="meta-item">
+                  <span className="icon">📍</span>
+                  <span>{event.location}</span>
+                </div>
+                {event.capacity && (
+                  <div className="meta-item">
+                    <span className="icon">👥</span>
+                    <span>Capacity: {event.attendees.length} / {event.capacity}</span>
+                  </div>
+                )}
+              </div>
+
+              <div className="event-detail-section">
+                <h2>About This Event</h2>
+                <p>{event.description}</p>
+              </div>
+
+              {event.attendees.length > 0 && (
+                <div className="event-detail-section">
+                  <h2>Attendees ({event.attendees.length})</h2>
+                  <div className="attendees-grid">
+                    {event.attendees.map(attendee => (
+                      <div key={attendee.id} className="attendee-card">
+                        {attendee.avatar && (
+                          <img src={attendee.avatar} alt={attendee.name} className="attendee-avatar" />
+                        )}
+                        <div className="attendee-info">
+                          <h4>{attendee.name}</h4>
+                          <p className="attendee-email">{attendee.email}</p>
+                          {attendee.major && <p className="attendee-major">{attendee.major}</p>}
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
+
+              {isUpcoming && event.attendees.length === 0 && (
+                <div className="event-detail-section">
+                  <EmptyState 
+                    message="No registrations yet" 
+                    description="Attendees will appear here once they register for your event." 
+                  />
+                </div>
+              )}
+            </div>
+          </>
+        )}
       </div>
     </div>
   );

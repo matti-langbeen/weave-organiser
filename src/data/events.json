@@ -1,52 +1,189 @@
 [
   {
     "id": "evt-1",
-    "name": "Tech Career Fair 2025",
-    "description": "Join us for an exciting career fair featuring top tech companies from around the region. Network with recruiters, learn about opportunities, and prepare for your future career.",
-    "date": "2025-02-15T10:00:00Z",
-    "location": "University Convention Center",
-    "companyId": "comp-1",
-    "attendees": ["std-1", "std-2", "std-3"],
-    "imageUrl": "https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=800"
+    "name": "Annual Tech Innovation Summit 2024",
+    "description": "Our flagship event brought together 150+ students and industry leaders to explore cutting-edge technologies. Featured keynote speeches, panel discussions, and networking sessions focused on AI, cloud computing, and sustainable tech solutions.",
+    "date": "2024-11-20T09:00:00Z",
+    "location": "Grand Convention Center, Hall A",
+    "organizerId": "org-1",
+    "capacity": 200,
+    "registrationDeadline": "2024-11-15T23:59:00Z",
+    "imageUrl": "https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=800",
+    "attendees": [
+      {
+        "id": "att-1",
+        "name": "Emma Thompson",
+        "email": "emma.thompson@university.edu",
+        "avatar": "https://i.pravatar.cc/150?img=1",
+        "major": "Computer Science",
+        "registeredAt": "2024-11-01T10:30:00Z"
+      },
+      {
+        "id": "att-2",
+        "name": "James Rodriguez",
+        "email": "james.rodriguez@university.edu",
+        "avatar": "https://i.pravatar.cc/150?img=12",
+        "major": "Software Engineering",
+        "registeredAt": "2024-11-02T14:20:00Z"
+      },
+      {
+        "id": "att-3",
+        "name": "Sophia Chen",
+        "email": "sophia.chen@university.edu",
+        "avatar": "https://i.pravatar.cc/150?img=5",
+        "major": "Data Science",
+        "registeredAt": "2024-11-03T09:15:00Z"
+      },
+      {
+        "id": "att-4",
+        "name": "Michael Brown",
+        "email": "michael.brown@university.edu",
+        "avatar": "https://i.pravatar.cc/150?img=13",
+        "major": "Information Systems",
+        "registeredAt": "2024-11-04T16:45:00Z"
+      },
+      {
+        "id": "att-5",
+        "name": "Olivia Martinez",
+        "email": "olivia.martinez@university.edu",
+        "avatar": "https://i.pravatar.cc/150?img=9",
+        "major": "Computer Science",
+        "registeredAt": "2024-11-05T11:00:00Z"
+      },
+      {
+        "id": "att-6",
+        "name": "David Kim",
+        "email": "david.kim@university.edu",
+        "avatar": "https://i.pravatar.cc/150?img=14",
+        "major": "Artificial Intelligence",
+        "registeredAt": "2024-11-06T13:30:00Z"
+      },
+      {
+        "id": "att-7",
+        "name": "Isabella Garcia",
+        "email": "isabella.garcia@university.edu",
+        "avatar": "https://i.pravatar.cc/150?img=10",
+        "major": "Cybersecurity",
+        "registeredAt": "2024-11-07T10:20:00Z"
+      },
+      {
+        "id": "att-8",
+        "name": "Ethan Williams",
+        "email": "ethan.williams@university.edu",
+        "avatar": "https://i.pravatar.cc/150?img=15",
+        "major": "Computer Engineering",
+        "registeredAt": "2024-11-08T15:40:00Z"
+      },
+      {
+        "id": "att-9",
+        "name": "Ava Johnson",
+        "email": "ava.johnson@university.edu",
+        "avatar": "https://i.pravatar.cc/150?img=16",
+        "major": "Data Science",
+        "registeredAt": "2024-11-09T09:50:00Z"
+      },
+      {
+        "id": "att-10",
+        "name": "Liam Anderson",
+        "email": "liam.anderson@university.edu",
+        "avatar": "https://i.pravatar.cc/150?img=33",
+        "major": "Software Engineering",
+        "registeredAt": "2024-11-10T12:25:00Z"
+      },
+      {
+        "id": "att-11",
+        "name": "Mia Taylor",
+        "email": "mia.taylor@university.edu",
+        "avatar": "https://i.pravatar.cc/150?img=20",
+        "major": "Computer Science",
+        "registeredAt": "2024-11-11T14:15:00Z"
+      },
+      {
+        "id": "att-12",
+        "name": "Noah Davis",
+        "email": "noah.davis@university.edu",
+        "avatar": "https://i.pravatar.cc/150?img=18",
+        "major": "Information Technology",
+        "registeredAt": "2024-11-12T10:05:00Z"
+      }
+    ]
   },
   {
     "id": "evt-2",
-    "name": "Software Engineering Workshop",
-    "description": "Hands-on workshop covering modern software development practices, including agile methodologies, CI/CD, and cloud deployment strategies.",
-    "date": "2025-03-10T14:00:00Z",
-    "location": "Innovation Lab, Building A",
-    "companyId": "comp-2",
-    "attendees": ["std-1", "std-4"],
-    "imageUrl": "https://images.unsplash.com/photo-1531482615713-2afd69097998?w=800"
-  },
-  {
-    "id": "evt-3",
-    "name": "Data Science Summit",
-    "description": "Explore the latest trends in data science and machine learning. Industry experts will share insights on AI applications and career paths.",
-    "date": "2025-04-05T09:00:00Z",
-    "location": "Main Auditorium",
-    "companyId": "comp-3",
-    "attendees": ["std-2", "std-3", "std-4", "std-5"],
-    "imageUrl": "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800"
-  },
-  {
-    "id": "evt-4",
-    "name": "Startup Pitch Night",
-    "description": "Watch aspiring entrepreneurs pitch their innovative ideas to a panel of investors and industry leaders. Great networking opportunity!",
-    "date": "2025-04-20T18:00:00Z",
-    "location": "Entrepreneurship Hub",
-    "companyId": "comp-1",
-    "attendees": ["std-1", "std-5"],
-    "imageUrl": "https://images.unsplash.com/photo-1559136555-9303baea8ebd?w=800"
-  },
-  {
-    "id": "evt-5",
-    "name": "UX Design Masterclass",
-    "description": "Learn from industry-leading UX designers about creating user-centered products. Includes portfolio review sessions and design challenges.",
-    "date": "2025-05-12T13:00:00Z",
-    "location": "Design Studio, Building C",
-    "companyId": "comp-2",
-    "attendees": ["std-3", "std-4"],
-    "imageUrl": "https://images.unsplash.com/photo-1581291518633-83b4ebd1d83e?w=800"
+    "name": "Spring Career Fair 2026",
+    "description": "Connect with leading employers across technology, finance, healthcare, and consulting sectors. This premier networking event offers students the opportunity to explore internships and full-time positions.",
+    "date": "2026-01-15T10:00:00Z",
+    "location": "University Sports Arena",
+    "organizerId": "org-1",
+    "capacity": 300,
+    "registrationDeadline": "2025-03-10T23:59:00Z",
+    "imageUrl": "https://images.unsplash.com/photo-1511578314322-379afb476865?w=800",
+    "attendees": [
+      {
+        "id": "att-13",
+        "name": "Lucas Wilson",
+        "email": "lucas.wilson@university.edu",
+        "avatar": "https://i.pravatar.cc/150?img=52",
+        "major": "Business Analytics",
+        "registeredAt": "2025-12-10T08:15:00Z"
+      },
+      {
+        "id": "att-14",
+        "name": "Charlotte Moore",
+        "email": "charlotte.moore@university.edu",
+        "avatar": "https://i.pravatar.cc/150?img=45",
+        "major": "Computer Science",
+        "registeredAt": "2025-12-11T10:30:00Z"
+      },
+      {
+        "id": "att-15",
+        "name": "Benjamin Lee",
+        "email": "benjamin.lee@university.edu",
+        "avatar": "https://i.pravatar.cc/150?img=68",
+        "major": "Data Science",
+        "registeredAt": "2025-12-12T14:20:00Z"
+      },
+      {
+        "id": "att-16",
+        "name": "Amelia White",
+        "email": "amelia.white@university.edu",
+        "avatar": "https://i.pravatar.cc/150?img=38",
+        "major": "Software Engineering",
+        "registeredAt": "2025-12-13T09:45:00Z"
+      },
+      {
+        "id": "att-17",
+        "name": "Alexander Harris",
+        "email": "alexander.harris@university.edu",
+        "avatar": "https://i.pravatar.cc/150?img=59",
+        "major": "Cybersecurity",
+        "registeredAt": "2025-12-14T11:10:00Z"
+      },
+      {
+        "id": "att-18",
+        "name": "Harper Clark",
+        "email": "harper.clark@university.edu",
+        "avatar": "https://i.pravatar.cc/150?img=31",
+        "major": "Information Systems",
+        "registeredAt": "2025-12-14T15:30:00Z"
+      },
+      {
+        "id": "att-19",
+        "name": "Mason Lewis",
+        "email": "mason.lewis@university.edu",
+        "avatar": "https://i.pravatar.cc/150?img=61",
+        "major": "Computer Engineering",
+        "registeredAt": "2025-12-15T10:00:00Z"
+      },
+      {
+        "id": "att-20",
+        "name": "Evelyn Walker",
+        "email": "evelyn.walker@university.edu",
+        "avatar": "https://i.pravatar.cc/150?img=44",
+        "major": "Artificial Intelligence",
+        "registeredAt": "2025-12-15T13:25:00Z"
+      }
+    ]
   }
 ]
+
