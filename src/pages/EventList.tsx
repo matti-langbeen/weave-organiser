@@ -23,10 +23,28 @@ const EventList = () => {
         // Filter events for this organizer only
         const organizerEvents = data.filter(event => event.organizerId === organizer.id);
         
+        // Helper function to check if event is today
+        const isToday = (eventDate: string) => {
+          const today = new Date();
+          const event = new Date(eventDate);
+          return (
+            today.getFullYear() === event.getFullYear() &&
+            today.getMonth() === event.getMonth() &&
+            today.getDate() === event.getDate()
+          );
+        };
+        
         // Split into past and upcoming
+        // Events happening today are considered upcoming (live)
         const now = new Date();
-        const past = organizerEvents.filter(event => new Date(event.date) < now);
-        const upcoming = organizerEvents.filter(event => new Date(event.date) >= now);
+        const past = organizerEvents.filter(event => {
+          const eventDate = new Date(event.date);
+          return !isToday(event.date) && eventDate < now;
+        });
+        const upcoming = organizerEvents.filter(event => {
+          const eventDate = new Date(event.date);
+          return isToday(event.date) || eventDate >= now;
+        });
         
         // Sort: upcoming ascending, past descending
         setPastEvents(past.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()));

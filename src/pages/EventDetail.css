@@ -43,6 +43,23 @@
   font-weight: 600;
 }
 
+.event-status-badge.live {
+  background: #22c55e;
+  color: white;
+  font-weight: 700;
+  animation: livePulse 2s ease-in-out infinite;
+  box-shadow: 0 4px 12px rgba(34, 197, 94, 0.4);
+}
+
+@keyframes livePulse {
+  0%, 100% {
+    box-shadow: 0 4px 12px rgba(34, 197, 94, 0.4);
+  }
+  50% {
+    box-shadow: 0 4px 20px rgba(34, 197, 94, 0.6);
+  }
+}
+
 .event-detail-content {
   padding: 2rem;
 }
@@ -227,6 +244,7 @@
   font-weight: 500;
   cursor: pointer;
   transition: all 0.2s;
+  text-decoration: none;
 }
 
 .btn:disabled {
@@ -302,6 +320,48 @@
   width: 100%;
   height: auto;
   display: block;
+}
+
+.attendee-card.checked-in {
+  background-color: #f0fdf4;
+}
+
+.attendee-card.not-checked-in {
+  background-color: #fef2f2;
+  opacity: 0.85;
+}
+
+.attendee-checkin-status {
+  margin-top: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.status-badge {
+  display: inline-block;
+  padding: 0.25rem 0.6rem;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.status-badge.checked-in {
+  background: #e8f8f0;
+  color: #11998e;
+}
+
+.status-badge.not-checked-in {
+  background: #fff0e8;
+  color: #ee0979;
+}
+
+.checkin-time {
+  font-size: 0.75rem;
+  color: #666;
+  margin-top: 0.2rem;
 }
 
 @media (max-width: 768px) {

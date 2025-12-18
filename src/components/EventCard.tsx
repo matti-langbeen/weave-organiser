@@ -23,12 +23,19 @@ const EventCard = ({ id, name, date, location, imageUrl, description, isUpcoming
     });
   };
 
+  const isLiveEvent = () => {
+    const eventDate = new Date(date);
+    const today = new Date();
+    return eventDate.toDateString() === today.toDateString();
+  };
+
   return (
     <Link to={`/events/${id}`} className={`event-card ${!isUpcoming ? 'event-card-past' : ''}`}>
       {imageUrl && (
         <div className="event-card-image">
           <img src={imageUrl} alt={name} />
           {!isUpcoming && <div className="event-card-badge">Past Event</div>}
+          {isLiveEvent() && <div className="event-card-badge live-badge">🔴 LIVE NOW</div>}
         </div>
       )}
       <div className="event-card-content">

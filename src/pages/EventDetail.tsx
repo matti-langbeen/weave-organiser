@@ -5,6 +5,8 @@ import { getEventById, updateEvent } from '../services/eventService';
 import LoadingSpinner from '../components/LoadingSpinner';
 import EmptyState from '../components/EmptyState';
 import EventQRCode from '../components/EventQRCode';
+import { EventStats } from '../components/EventStats';
+import ConnectionTracker from '../components/ConnectionTracker';
 import './EventDetail.css';
 
 const EventDetail = () => {
@@ -258,7 +260,8 @@ const EventDetail = () => {
             {event.imageUrl && (
               <div className="event-detail-hero">
                 <img src={event.imageUrl} alt={event.name} />
-                {!isUpcoming && <div className="event-status-badge">Past Event</div>}
+                {event.live && <div className="event-status-badge live">🔴 LIVE</div>}
+                {!event.live && !isUpcoming && <div className="event-status-badge">Past Event</div>}
               </div>
             )}
 
@@ -301,6 +304,12 @@ const EventDetail = () => {
                 <p>{event.description}</p>
               </div>
 
+              {/* Show dashboard only for live events */}
+              {event.live && <ConnectionTracker eventId={event.id} event={event} />}
+
+              {/* Show summary stats for past events only */}
+              {!event.live && !isUpcoming && <EventStats event={event} />}
+
               {isUpcoming && (
                 <div className="event-detail-section">
                   <h2>Event Check-in</h2>
@@ -316,8 +325,15 @@ const EventDetail = () => {
                 <div className="event-detail-section">
                   <h2>Attendees ({event.attendees.length})</h2>
                   <div className="attendees-grid">
-                    {event.attendees.map(attendee => (
-                      <div key={attendee.id} className="attendee-card">
+                    {[...event.attendees]
+                      .sort((a, b) => {
+                        // Sort: checked in first, then not checked in
+                        if (a.checkedIn && !b.checkedIn) return -1;
+                        if (!a.checkedIn && b.checkedIn) return 1;
+                        return 0;
+                      })
+                      .map(attendee => (
+                      <div key={attendee.id} className={`attendee-card ${attendee.checkedIn ? 'checked-in' : 'not-checked-in'}`}>
                         {attendee.avatar && (
                           <img src={attendee.avatar} alt={attendee.name} className="attendee-avatar" />
                         )}
@@ -325,6 +341,25 @@ const EventDetail = () => {
                           <h4>{attendee.name}</h4>
                           <p className="attendee-email">{attendee.email}</p>
                           {attendee.major && <p className="attendee-major">{attendee.major}</p>}
+                          {!isUpcoming && (
+                            <div className="attendee-checkin-status">
+                              {attendee.checkedIn ? (
+                                <>
+                                  <span className="status-badge checked-in">✓ Checked In</span>
+                                  {attendee.checkInTime && (
+                                    <span className="checkin-time">
+                                      {new Date(attendee.checkInTime).toLocaleTimeString('en-US', { 
+                                        hour: '2-digit', 
+                                        minute: '2-digit' 
+                                      })}
+                                    </span>
+                                  )}
+                                </>
+                              ) : (
+                                !event.live && <span className="status-badge not-checked-in">✗ No Show</span>
+                              )}
+                            </div>
+                          )}
                         </div>
                       </div>
                     ))}

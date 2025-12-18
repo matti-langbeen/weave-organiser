@@ -43,7 +43,20 @@
   font-size: 0.8rem;
   font-weight: 500;
 }
+.event-card-badge.live-badge {
+  background: #ee0979;
+  animation: pulse 2s ease-in-out infinite;
+  box-shadow: 0 0 20px rgba(238, 9, 121, 0.6);
+}
 
+@keyframes pulse {
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(238, 9, 121, 0.6);
+  }
+  50% {
+    box-shadow: 0 0 30px rgba(238, 9, 121, 0.9);
+  }
+}
 .event-card-content {
   padding: 1.5rem;
 }

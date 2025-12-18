@@ -13,6 +13,8 @@ export interface Attendee {
   avatar?: string;
   major?: string;
   registeredAt?: string;
+  checkedIn?: boolean;
+  checkInTime?: string;
 }
 
 export interface Booth {
@@ -46,6 +48,7 @@ export interface EventType {
   registrationDeadline?: string;
   floorPlan?: FloorPlan;
   booths?: Booth[];
+  live?: boolean;
 }
 
 export interface Company {

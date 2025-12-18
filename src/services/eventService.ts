@@ -5,15 +5,85 @@ import { delay } from '../utils/delay';
 let eventsCache: EventType[] | null = null;
 
 /**
- * Fetch all events
+ * Initialize events cache and set live event date to current time
+ */
+const initializeEvents = async (): Promise<EventType[]> => {
+  const eventsData = await import('../data/events.json');
+  const events = eventsData.default as EventType[];
+  
+  // Find the live event (evt-2) and update its date to current time
+  const liveEventIndex = events.findIndex(event => event.id === 'evt-2');
+  if (liveEventIndex !== -1) {
+    const now = new Date();
+    const liveEvent = { ...events[liveEventIndex] };
+    
+    // Set the event date to today at 9:00 AM
+    const eventDate = new Date(now);
+    eventDate.setHours(9, 0, 0, 0);
+    liveEvent.date = eventDate.toISOString();
+    
+    // Update registration deadline to yesterday
+    const deadline = new Date(now);
+    deadline.setDate(deadline.getDate() - 1);
+    deadline.setHours(23, 59, 0, 0);
+    liveEvent.registrationDeadline = deadline.toISOString();
+    
+    // Update check-in times for attendees to today
+    liveEvent.attendees = liveEvent.attendees.map(attendee => {
+      if (typeof attendee !== 'string' && attendee.checkedIn && attendee.checkInTime) {
+        const checkInTime = new Date(now);
+        checkInTime.setHours(8, 45, 0, 0);
+        return {
+          ...attendee,
+          checkInTime: checkInTime.toISOString()
+        };
+      }
+      return attendee;
+    });
+    
+    events[liveEventIndex] = liveEvent;
+  }
+  
+  return events;
+};
+
+/**
+ * Check if an event is happening today (live)
+ */
+const isEventLiveToday = (eventDate: string): boolean => {
+  const today = new Date();
+  const event = new Date(eventDate);
+  
+  return (
+    today.getFullYear() === event.getFullYear() &&
+    today.getMonth() === event.getMonth() &&
+    today.getDate() === event.getDate()
+  );
+};
+
+/**
+ * Fetch all events (sorted with live events on top)
  */
 export const getEvents = async (): Promise<EventType[]> => {
   await delay(800);
   if (!eventsCache) {
-    const eventsData = await import('../data/events.json');
-    eventsCache = eventsData.default as EventType[];
+    eventsCache = await initializeEvents();
   }
-  return eventsCache;
+  
+  // Sort events: live events (today) first, then by date
+  const sortedEvents = [...eventsCache].sort((a, b) => {
+    const aIsLive = isEventLiveToday(a.date);
+    const bIsLive = isEventLiveToday(b.date);
+    
+    // If one is live and the other isn't, live comes first
+    if (aIsLive && !bIsLive) return -1;
+    if (!aIsLive && bIsLive) return 1;
+    
+    // Otherwise, sort by date (most recent first)
+    return new Date(b.date).getTime() - new Date(a.date).getTime();
+  });
+  
+  return sortedEvents;
 };
 
 /**
