@@ -3,6 +3,7 @@
 }
 
 :root {
+  --brand-color: #1800ad;
   font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;

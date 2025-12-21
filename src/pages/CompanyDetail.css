@@ -40,14 +40,14 @@
 
 .company-website {
   display: inline-block;
-  color: #646cff;
+  color: var(--brand-color);
   text-decoration: none;
   font-weight: 500;
   transition: color 0.2s;
 }
 
 .company-website:hover {
-  color: #4a54e6;
+  color: #1200a0;
   text-decoration: underline;
 }
 

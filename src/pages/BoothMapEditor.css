@@ -134,7 +134,7 @@
 }
 
 .booth-badge {
-  background: #646cff;
+  background: var(--brand-color);
   color: white;
   padding: 0.25rem 0.5rem;
   border-radius: 4px;
@@ -175,12 +175,12 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #646cff;
+  color: var(--brand-color);
 }
 
 .zoom-btn:hover:not(:disabled) {
   background: #f0f4ff;
-  border-color: #646cff;
+  border-color: var(--brand-color);
 }
 
 .zoom-btn:disabled {
@@ -226,7 +226,7 @@
 .booth {
   position: absolute;
   background: white;
-  border: 2px solid #646cff;
+  border: 2px solid var(--brand-color);
   border-radius: 8px;
   cursor: move;
   display: flex;
@@ -239,13 +239,13 @@
 }
 
 .booth:hover {
-  box-shadow: 0 4px 12px rgba(100, 108, 255, 0.3);
+  box-shadow: 0 4px 12px rgba(24, 0, 173, 0.3);
   z-index: 10;
 }
 
 .booth.selected {
-  border-color: #535bf2;
-  box-shadow: 0 0 0 3px rgba(100, 108, 255, 0.2);
+  border-color: #1200a0;
+  box-shadow: 0 0 0 3px rgba(24, 0, 173, 0.2);
   z-index: 20;
 }
 
@@ -261,7 +261,7 @@
 .booth-number {
   font-weight: 700;
   font-size: 1.2rem;
-  color: #646cff;
+  color: var(--brand-color);
   margin-bottom: 0.25rem;
 }
 

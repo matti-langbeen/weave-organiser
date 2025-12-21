@@ -1,6 +1,6 @@
 .back-link {
   display: inline-block;
-  color: #646cff;
+  color: var(--brand-color);
   text-decoration: none;
   margin-bottom: 1.5rem;
   font-weight: 500;
@@ -253,12 +253,12 @@
 }
 
 .btn-primary {
-  background: #646cff;
+  background: var(--brand-color);
   color: white;
 }
 
 .btn-primary:hover:not(:disabled) {
-  background: #535bf2;
+  background: #1200a0;
 }
 
 .btn-secondary {
@@ -295,7 +295,7 @@
 .form-group input:focus,
 .form-group textarea:focus {
   outline: none;
-  border-color: #646cff;
+  border-color: var(--brand-color);
 }
 
 .form-group textarea {

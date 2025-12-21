@@ -256,7 +256,7 @@ const BoothMapEditor = () => {
                     <label>Assign Company</label>
                     <select
                       value={selectedBoothData.companyId || ''}
-                      onChange={(e) => handleAssignCompany(selectedBooth, e.target.value)}
+                      onChange={(e) => selectedBooth && handleAssignCompany(selectedBooth, e.target.value)}
                     >
                       <option value="">-- No Company --</option>
                       {companies.map(company => (
@@ -268,7 +268,7 @@ const BoothMapEditor = () => {
                   </div>
                   <button
                     className="btn btn-danger btn-full"
-                    onClick={() => handleDeleteBooth(selectedBooth)}
+                    onClick={() => selectedBooth && handleDeleteBooth(selectedBooth)}
                   >
                     Delete Booth
                   </button>

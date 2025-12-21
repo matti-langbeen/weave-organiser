@@ -75,20 +75,20 @@
 }
 
 .stat-card:hover {
-  border-color: #667eea;
-  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.15);
+  border-color: var(--brand-color);
+  box-shadow: 0 4px 12px rgba(24, 0, 173, 0.15);
   transform: translateY(-2px);
 }
 
 .stat-card.primary {
-  background: #667eea;
-  border-color: #667eea;
+  background: var(--brand-color);
+  border-color: var(--brand-color);
   color: white;
 }
 
 .stat-card.primary:hover {
-  background: #5568d3;
-  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+  background: #1200a0;
+  box-shadow: 0 4px 12px rgba(24, 0, 173, 0.3);
 }
 
 .stat-icon {
@@ -178,7 +178,7 @@
 .progress-count {
   font-size: 16px;
   font-weight: 700;
-  color: #667eea;
+  color: var(--brand-color);
 }
 
 .progress-bar {
@@ -190,7 +190,7 @@
 
 .progress-fill {
   height: 100%;
-  background: #667eea;
+  background: var(--brand-color);
   border-radius: 6px;
   transition: width 0.5s ease;
   position: relative;
