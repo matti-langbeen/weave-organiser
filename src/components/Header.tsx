@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import { useOrganizer } from '../contexts/OrganizerContext';
+import logo from '../assets/logo.png';
 import './Header.css';
 
 const Header = () => {
@@ -9,8 +10,7 @@ const Header = () => {
     <header className="header">
       <div className="header-container">
         <Link to="/" className="header-logo">
-          <span className="logo-icon">🎓</span>
-          <span className="logo-text">Weave Organiser</span>
+          <img src={logo} alt="Weave Organizer" />
         </Link>
         <nav className="header-nav">
           <Link to="/">My Events</Link>
